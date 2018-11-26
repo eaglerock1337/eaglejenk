@@ -46,3 +46,6 @@ To use your personal Docker image instead of mine, change the name
 of the image referenced in eaglejenk-kube.yml:
 
   $ sed -i 's/eaglerock/<docker_id>/g' eaglejenk-kube.yml 
+
+If you wish to customize the pre-installed plugins, include them
+in the plugins.txt file (one per line).
