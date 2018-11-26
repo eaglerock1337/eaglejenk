@@ -1,3 +1,7 @@
+gitlab
+gitlab-oauth
+gitlab-hook
+gitlab-merge-request-jenkins
 kubernetes-cd
 github-branch-source
 github-pullrequest
