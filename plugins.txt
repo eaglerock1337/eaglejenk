@@ -1,0 +1,9 @@
+kubernetes-cd
+github-branch-source
+github-pullrequest
+github
+kubernetes
+workflow-job
+workflow-aggregator
+credentials-binding
+git

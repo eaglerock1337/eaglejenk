@@ -1,0 +1,63 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: eaglejenk-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: eaglejenk
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+
+---
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: eaglejenk-dep
+  labels:
+    app: eaglejenk
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eaglejenk
+      track: stable
+  template:
+    metadata:
+      labels:
+        app: eaglejenk
+        track: stable
+    spec:
+      containers:
+      - name: eaglejenk
+        image: eaglerock/eaglejenk:latest
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - mountPath: /home/jenkins_home
+          name: eaglejenk-vol
+        - mountPath: /var/run/docker.sock
+          name: docker-sock
+      volumes:
+      - name: eaglejenk-vol
+        persistentVolumeClaim:
+          claimName: eaglejenk-pvclaim
+      - name: docker-sock
+        hostPath:
+          path: /var/run/docker.sock
+          type: File
+
+        
+#        livenessProbe:
+#          httpGet:
+#            path: /
+#            port: 8080
+#          initialDelaySeconds: 15
+#          timeoutSeconds: 1
+#          periodSeconds: 10
+#        resources:
+#          requests:
+#            cpu: 200m
