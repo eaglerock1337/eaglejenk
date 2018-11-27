@@ -1,13 +1,11 @@
 gitlab
 gitlab-oauth
 gitlab-hook
-gitlab-merge-request-jenkins
 kubernetes-cd
-github-branch-source
-github-pullrequest
-github
 kubernetes
 workflow-job
 workflow-aggregator
+credentials
 credentials-binding
+xunit
 git

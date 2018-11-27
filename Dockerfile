@@ -20,7 +20,7 @@ RUN apt-get update && \
    apt-get -y install docker-ce
 
 # Allow Jenkins user to access Docker
-RUN chmod -a -G docker jenkins
+RUN usermod -aG docker jenkins
 
 # Custom plugin install
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
