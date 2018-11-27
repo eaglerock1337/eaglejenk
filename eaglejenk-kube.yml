@@ -37,19 +37,18 @@ spec:
         ports:
         - containerPort: 8080
         volumeMounts:
-        - mountPath: /var/jenkins_home
+        - mountPath: /var/jenkins_home/
           name: eaglejenk-vol
         - mountPath: /var/run/docker.sock
           name: docker-sock
       volumes:
       - name: eaglejenk-vol
         persistentVolumeClaim:
-          claimName: eaglejenk-pvclaim
+          claimName: eaglejenk-pvc
       - name: docker-sock
         hostPath:
           path: /var/run/docker.sock
           type: File
-
         
 #        livenessProbe:
 #          httpGet:
